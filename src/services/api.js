@@ -59,6 +59,18 @@ export async function getAllAttendance(params) {
   return request(`/api/v1/attendance${toQuery(params)}`);
 }
 
+export function startKeepAlive(intervalMs = 6000) {
+  const ping = () => {
+    fetch(`${API_BASE_URL}/api/v1/employees?size=1`, { method: "GET" }).catch(
+      () => {}
+    );
+  };
+
+  ping();
+  const intervalId = setInterval(ping, intervalMs);
+  return () => clearInterval(intervalId);
+}
+
 export function normalizePage(data) {
   return {
     items: data?.items || [],
