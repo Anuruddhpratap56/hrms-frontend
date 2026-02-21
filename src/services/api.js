@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://13.203.67.151:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://hrms-backend-1-7yuz.onrender.com";
 
 function toQuery(params) {
   const searchParams = new URLSearchParams();
